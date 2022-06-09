@@ -1,11 +1,11 @@
-public class Contact {
+public class Contact1 {
 //private attributes for the Contact class
     private String name;
     private String phoneNumber;
     private String emailId;
 
     //constructor for this class
-    public Contact(String name, String phoneNumber, String emailId){
+    public Contact1(String name, String phoneNumber, String emailId){
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.emailId = emailId;

@@ -1,7 +1,7 @@
 public class RegularTicket {
-  public boolean foodRequested;
-  public boolean waterRequested;
-  public boolean snacksRequested;
+  private boolean foodRequested;
+  private boolean waterRequested;
+  private boolean snacksRequested;
     
   //Constructor
     RegularTicket(boolean foodRequested, boolean waterRequested, boolean snacksRequested){

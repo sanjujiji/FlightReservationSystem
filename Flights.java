@@ -1,25 +1,31 @@
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 
 public class Flights {
     private int flightId;
-    public String flightNumber;
-    public String airline;
-    public static int flightCapacity = 100;
-    public static int noOfSeatsBooked = 0;
-    public String departureLocation;
-    public String destinationLocation;
-    public String departureDateTime;
-    public Date arrivalDateTime;
-    public long journeyDuration;
-    public float ticketPrice;
+    private String flightNumber;
+    private String airline;
+    private static int flightCapacity;
+    private static int noOfSeatsBooked;
+    private String departureLocation;
+    private String destinationLocation;
+    private LocalDateTime departureDateTime;
+    private LocalDateTime arrivalDateTime;
+    private long journeyDuration;
+    private float ticketPrice;
     public TimeUnit timeUnit;
 
     
-    public void Flights(){
 
-    }
-    public void addFlights(String flightNumber, String airline, int flightCapacity, int noOfSeatsBooked, String departureLocation, String destinationLocation, String departureDateTime, String arrivalDateTime, float ticketPrice){
+    //Constructor class for Flights
+    Flights(String flightNumber, String airline, int flightCapacity, int noOfSeatsBooked, String departureLocation, String destinationLocation,
+    LocalDateTime departureDateTime, LocalDateTime arrivalDateTime,float ticketPrice){
+       
+
         this.flightId = flightNumber.hashCode();
         this.flightNumber = flightNumber;
         this.airline = airline;
@@ -29,15 +35,14 @@ public class Flights {
         this.destinationLocation = destinationLocation;
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
-        this.ticketPrice = ticketPrice;
-        this.journeyDuration = timeUnit.convert(arrivalDateTime.getTime() - departureDateTime.getTime(),TimeUnit.HOURS);
+        this.journeyDuration = ChronoUnit.HOURS.between(departureDateTime, arrivalDateTime);
     }
-
+   
     public String getFlightDetails(String flightNumber, String airline, String destinationLocation, Date departureDateTime){
         return "Flight Number : " + this.flightNumber +" Airline : "+this.airline +" From : "+this.departureLocation + " To :" + this.destinationLocation+ " For Date :" +this.departureDateTime;
     }
 
-    public int checkSeatAvailability(Flights flight){
+    public int checkSeatAvailability(){
         return this.flightCapacity - noOfSeatsBooked;
     }
 
@@ -45,5 +50,28 @@ public class Flights {
         this.noOfSeatsBooked++;
     }
 
+    public float getTicketPrice(){
+            return this.ticketPrice;
+    }
+
+    public int getNoOfSeatsBooked(){
+        return this.noOfSeatsBooked;
+    }
+    //getter methods
+    public String getFlightNumber(){
+        return this.flightNumber;
+    }
+
+    public String getAirline(){
+        return this.airline;
+    }
+
+    public String getDepartureLocation(){
+        return this.departureLocation;
+    }
+
+    public LocalDate getDeparturDateTime(){
+        return this.departureDateTime;
+    }
     
 }

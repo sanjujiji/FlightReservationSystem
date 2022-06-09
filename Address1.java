@@ -1,4 +1,4 @@
-public class Address {
+public class Address1 {
     
     //class variables for Address
     private String streetAddress;
@@ -6,7 +6,7 @@ public class Address {
     private String state;
 
     //constructor
-    public Address(String streetAddress, String city, String state){
+    public Address1(String streetAddress, String city, String state){
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;

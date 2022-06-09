@@ -1,6 +1,6 @@
 public class TouristTicket {
-    public String[] touristLocations = new String[5];
-    public String hotelName;
+    private String[] touristLocations = new String[5];
+    private String hotelName;
     
     //Constructor
     TouristTicket(String touristLocation, String hotelName){
