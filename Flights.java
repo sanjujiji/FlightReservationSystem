@@ -19,13 +19,9 @@ public class Flights {
     private float ticketPrice;
     public TimeUnit timeUnit;
 
-    
-
     //Constructor class for Flights
     Flights(String flightNumber, String airline, int flightCapacity, int noOfSeatsBooked, String departureLocation, String destinationLocation,
     LocalDateTime departureDateTime, LocalDateTime arrivalDateTime,float ticketPrice){
-       
-
         this.flightId = flightNumber.hashCode();
         this.flightNumber = flightNumber;
         this.airline = airline;
@@ -35,29 +31,37 @@ public class Flights {
         this.destinationLocation = destinationLocation;
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
+        this.ticketPrice = ticketPrice;
         this.journeyDuration = ChronoUnit.HOURS.between(departureDateTime, arrivalDateTime);
     }
    
-    public String getFlightDetails(String flightNumber, String airline, String destinationLocation, Date departureDateTime){
-        return "Flight Number : " + this.flightNumber +" Airline : "+this.airline +" From : "+this.departureLocation + " To :" + this.destinationLocation+ " For Date :" +this.departureDateTime;
+    //method to print the flight details
+    public String getFlightDetails(){
+        return "Flight Number : " + this.flightNumber +" Airline : "+this.airline +" From : "+this.departureLocation + " To :" + this.destinationLocation+ " For Date :" +this.departureDateTime+" Journey Duration :"+journeyDuration;
     }
 
+    //method to check the seats availability
     public int checkSeatAvailability(){
         return this.flightCapacity - noOfSeatsBooked;
     }
 
+    //method to update the seats booked attribute whenever a ticket is being created
     public void updateNoOfSeats(){
         this.noOfSeatsBooked++;
     }
-
-    public float getTicketPrice(){
-            return this.ticketPrice;
+    
+    //method for ticket cancellation
+    public void cancelSeats(){
+        this.noOfSeatsBooked = this.noOfSeatsBooked - 1;
     }
 
+    //getter methods
     public int getNoOfSeatsBooked(){
         return this.noOfSeatsBooked;
     }
-    //getter methods
+    public float getTicketPrice(){
+        return this.ticketPrice;
+}
     public String getFlightNumber(){
         return this.flightNumber;
     }
@@ -70,7 +74,7 @@ public class Flights {
         return this.departureLocation;
     }
 
-    public LocalDate getDeparturDateTime(){
+    public LocalDateTime getDeparturDateTime(){
         return this.departureDateTime;
     }
     

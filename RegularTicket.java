@@ -1,15 +1,17 @@
-public class RegularTicket {
+public class RegularTicket extends Tickets {
   private boolean foodRequested;
   private boolean waterRequested;
   private boolean snacksRequested;
     
   //Constructor
-    RegularTicket(boolean foodRequested, boolean waterRequested, boolean snacksRequested){
+    RegularTicket(char ticketType, Flights flight, String ticketStatus,boolean foodRequested, boolean waterRequested, boolean snacksRequested){
+        super(ticketType, flight, ticketStatus);
         this.foodRequested = foodRequested;
         this.waterRequested = waterRequested;
         this.snacksRequested = snacksRequested;
     }
 
+    //method for special services retrieval
     public String checkSpecialServicesFood(){
         if (this.foodRequested){
             return "Yes";
@@ -31,6 +33,7 @@ public class RegularTicket {
         else return "No";
     }
 
+    // methods for special services
     public void setSpecialServicesFood(boolean foodRequested){
         this.foodRequested = foodRequested;
     }
@@ -42,10 +45,4 @@ public class RegularTicket {
     public void setSpecialServicesSnacks(boolean snacksRequested){
         this.snacksRequested = snacksRequested;
     }
-
-    public void bookTicket(Flights flight){
-        //to add code
-
-    }
-
 }
