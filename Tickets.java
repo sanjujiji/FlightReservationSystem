@@ -6,7 +6,6 @@ public abstract class Tickets {
     private int ticketId;
     private char ticketType;
     private int pnrNumber;
-    private float ticketPrice;
     private String seatNumber;
     private String ticketStatus;
     private Flights flight;
@@ -20,9 +19,8 @@ public abstract class Tickets {
     Tickets(char ticketType, Flights flight, String ticketStatus){
         this.ticketId = alphabet.hashCode();
         this.ticketType = ticketType;
-        this.pnrNumber = rand.nextInt();
+        this.pnrNumber = Math.abs(rand.nextInt());
         this.flight  = flight;
-        this.ticketPrice = flight.getTicketPrice();
         this.seatNumber = flight.getNoOfSeatsBooked()+1+"-"+randomChar;
         this.ticketStatus = ticketStatus;
     }
@@ -31,13 +29,21 @@ public abstract class Tickets {
         this.ticketStatus = "Cancelled";
         flight.cancelSeats();
     }
+
+    public void getTicketDetails(Flights flight){
+        System.out.println("Ticket Details :");
+        System.out.println("\tTicket Type :"+this.ticketType+"\tPNR number :"+this.pnrNumber+"\tPrice :"+flight.getTicketPrice()+"\tSeat Number :"+this.seatNumber+"\tTicket Status :"+this.ticketStatus);
+        System.out.println("Flight Details :");
+        System.out.println(flight.getFlightDetails());
+    }
+
        
     public void printTicket(Tickets ticket){
         if (ticket instanceof RegularTicket){
-            System.out.println("PNR number : "+Math.abs(ticket.pnrNumber)+" for Regular ticket");
+            System.out.println("PNR number : "+ticket.pnrNumber+" for Regular ticket");
         }
         if (ticket instanceof TouristTicket){
-            System.out.println("PNR number : "+Math.abs(ticket.pnrNumber)+" for Tourist ticket");
+            System.out.println("PNR number : "+ticket.pnrNumber+" for Tourist ticket");
         }
     }    
 }

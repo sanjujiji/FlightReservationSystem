@@ -1,12 +1,11 @@
 import java.util.Date;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Passenger {
     private Address address;
     private Contact contact;
     private int passengerId;
-    private RegularTicket regularTicket;
-    private TouristTicket touristTicket;
     private static int idCounter;
 
     // nested class Address
@@ -111,31 +110,6 @@ public class Passenger {
         return "Street : " + address.getStreetAddress() + ", City :" + address.getCity() + ", State : "+ address.getState();
     }
 
-    // update Contact and AddressDetails
-    public void setContactDetails(String name, String phoneNumber, String emailId) {
-        if (name != "") {
-            contact.setName(name);
-        }
-        if (phoneNumber != "") {
-            contact.setPhoneNumber(phoneNumber);
-        }
-        if (emailId != "") {
-            contact.setEmailId(emailId);
-        }
-    }
-
-    public void setAddressDetails(String streetAddress, String city, String state) {
-        if (streetAddress != "") {
-            address.setStreetAddress(streetAddress);
-        }
-        if (city != "") {
-            address.setCity(city);
-        }
-        if (state != "") {
-            address.setState(state);
-        }
-    }
-
     // Get the count of Passenger objects
     public int getPassengerCount() {
         return Passenger.idCounter;
@@ -170,6 +144,8 @@ public class Passenger {
                 RegularTicket regularTicket = new RegularTicket('R', flight, "Confirmed", foodRequestedIn,
                         waterRequestedIn, snacksRequestedIn);
                 flight.updateNoOfSeats();
+                regularTicket.getTicketDetails(flight);
+               
             }
 
             if (ticketType == 'T') {
@@ -187,7 +163,7 @@ public class Passenger {
                         hotelCity, hotelState);
                 flight.updateNoOfSeats();
                 touristTicket.addTouristLocation();
-                touristTicket.deleteTouristLocation();
+                touristTicket.getTicketDetails(flight);
             }
         }
         else System.out.println("Seats are not available");

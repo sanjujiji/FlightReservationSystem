@@ -16,18 +16,21 @@ public class TouristTicket extends Tickets{
     public void addTouristLocation(){
         Scanner input = new Scanner(System.in);
         String response, touristLocation;
-        System.out.print("Do you want to add Tourist Locations (Yes/No)?");
+        System.out.print("Do you want to add Tourist Locations (Yes/No) :");
         response = input.next();
 
         if (response.equals("Yes")){
             for (int i =0; i< touristLocations.length;i++){
                 int j=i+1;
                 System.out.print("Enter tourist location "+j+": ");
+                if(i==0){
+                    input.nextLine();
+                }
                 touristLocation = input.nextLine();
                 if (touristLocations[i] == null){
                     touristLocations[i] = touristLocation;
                 }
-                System.out.println();
+                if (i<5){
                 System.out.print("Do you want to add another(Yes/No)(Only 5 allowed):");
                 response = input.nextLine();
                 if(response.equals("Yes")){
@@ -36,6 +39,7 @@ public class TouristTicket extends Tickets{
                 else {
                     break;
                 }
+            }
             }
         }
         input.close();
@@ -46,7 +50,7 @@ public class TouristTicket extends Tickets{
         Scanner input = new Scanner(System.in);
         String response, touristLocation;
 
-        System.out.println("Do you want to delete Tourist Locations (Yes/No)?");
+        System.out.println("Do you want to delete Tourist Locations (Yes/No) :");
         response = input.next();
 
         if (response.equals("Yes")){
@@ -69,5 +73,6 @@ public class TouristTicket extends Tickets{
             }
 
         }
+        input.close();
     }
 }

@@ -3,6 +3,7 @@ import java.util.concurrent.TimeUnit;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.time.format.DateTimeFormatter;
 
 
 public class Flights {
@@ -37,7 +38,8 @@ public class Flights {
    
     //method to print the flight details
     public String getFlightDetails(){
-        return "Flight Number : " + this.flightNumber +" Airline : "+this.airline +" From : "+this.departureLocation + " To :" + this.destinationLocation+ " For Date :" +this.departureDateTime+" Journey Duration :"+journeyDuration;
+        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm");
+        return "\tFlight Number : " + this.flightNumber +"\tAirline : "+this.airline +"\tFrom : "+this.departureLocation + "\tTo :" + this.destinationLocation+ "\tFor Date :" +this.departureDateTime.format(outputFormat)+"\tJourney Duration :"+journeyDuration+" hours";
     }
 
     //method to check the seats availability

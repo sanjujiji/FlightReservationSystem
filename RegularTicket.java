@@ -33,7 +33,7 @@ public class RegularTicket extends Tickets {
         else return "No";
     }
 
-    // methods for special services
+  //setter methods for special services
     public void setSpecialServicesFood(boolean foodRequested){
         this.foodRequested = foodRequested;
     }

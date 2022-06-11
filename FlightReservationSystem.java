@@ -11,7 +11,7 @@ public class FlightReservationSystem {
         Scanner input = new Scanner(System.in);
         String response = input.next();
         // flight object variables
-        String flightNumberIn, airlineIn, departureLocationIn, destinationLocationIn, departureDateTimeIn, arrivalDateTimeIn;
+        String flightNumberIn, airlineIn, departureLocationIn, destinationLocationIn, departureDateTimeIn;
 
         // convert the strings containing date fields to date fields
         DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm");
@@ -21,7 +21,7 @@ public class FlightReservationSystem {
         Flights flight1 = new Flights("6E122", "Indigo", 100, 0, "Mumbai", "Bangalore", departureDate, arrivalDate, 4500.50f);
 
         LocalDateTime departureDate1 = LocalDateTime.parse("06/24/2022 16:30", inputFormat);
-        LocalDateTime arrivalDate1 = LocalDateTime.parse("06/24/2022 17:30", inputFormat);
+        LocalDateTime arrivalDate1 = LocalDateTime.parse("06/24/2022 18:00", inputFormat);
 
         Flights flight2 = new Flights("6E134", "Indigo", 150, 0, "Mumbai", "Ahmedabad", departureDate1, arrivalDate1,3000.00f);
 
@@ -45,8 +45,6 @@ public class FlightReservationSystem {
             destinationLocationIn = input.nextLine();
             System.out.print("Departure Date & Time :");
             departureDateTimeIn = input.nextLine();
-            System.out.print("Arrival Date & Time : ");
-            arrivalDateTimeIn = input.nextLine();
 
             // check if the flight attributes matches the user attributes
             try{
@@ -69,6 +67,7 @@ public class FlightReservationSystem {
         RegularTicket regTicket = new RegularTicket('R', flight1, "Confirmed", true, true, true);
         TouristTicket tourTicket = new TouristTicket('T', flight2, "Confirmed", "Hotel Oberoi", "Borivali East","Mumbai", "Maharashtra");
 
+        System.out.println("This is for Checkpoint-5");
         printTicketDetails(regTicket);
         printTicketDetails(tourTicket);
 
